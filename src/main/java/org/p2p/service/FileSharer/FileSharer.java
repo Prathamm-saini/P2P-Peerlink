@@ -54,9 +54,6 @@ public class FileSharer {
                 return port;
             }
         }
-
-        // NOTE: A timeout or limit should be added in production
-        // to avoid potential infinite loops if all ports are taken.
     }
 
     /**
