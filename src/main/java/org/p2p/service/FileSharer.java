@@ -1,4 +1,4 @@
-package org.p2p.service.FileSharer;
+package org.p2p.service;
 
 import org.p2p.utils.UploadUtils;
 import java.io.File;
