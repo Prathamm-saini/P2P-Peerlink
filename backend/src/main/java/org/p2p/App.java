@@ -1,31 +1,24 @@
 package org.p2p;
 
 import org.p2p.controller.FileController;
-import java.io.IOException;
 
-/**
- * PeerLink - P2P File Sharing Application
- */
 public class App {
     public static void main(String[] args) {
         try {
-            // Start the API server on port 8080
             FileController fileController = new FileController(8080);
             fileController.start();
 
             System.out.println("PeerLink server started on port 8080");
-            System.out.println("UI available at http://localhost:3000");
+            System.out.println("Press Ctrl+C to exit");
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                System.out.println("Shutting down server...");
+                System.out.println("Stopping server...");
                 fileController.stop();
             }));
 
-            System.out.println("Press Enter to stop the server");
-            System.in.read();
+            Thread.currentThread().join();
 
-        } catch (IOException e) {
-            System.err.println("Error starting server: " + e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
